@@ -5,8 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.barbora.gallery.core.photo.Photo
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -26,6 +24,7 @@ class GalleryViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 loading.value = true
+                error.value = null
                 photoList.value = getPhotosUseCase(page = 1)
             } catch (e: Exception) {
                 error.value = e.message
