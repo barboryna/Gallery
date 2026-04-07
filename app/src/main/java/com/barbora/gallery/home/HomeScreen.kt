@@ -1,6 +1,5 @@
 package com.barbora.gallery.home
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,7 +17,6 @@ fun HomeScreen(
 ) {
     val navController = rememberNavController()
 
-    BackHandler {viewModel.onNavigateBack() }
     StateTriggeredEffect(viewModel.navigate) { destination ->
         navController.navigate(destination)
     }
